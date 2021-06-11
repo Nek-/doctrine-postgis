@@ -2,23 +2,19 @@
 
 /* This file is auto-generated. Don't edit directly! */
 
-namespace Jsor\Doctrine\PostGIS\Functions;
+namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
-use Jsor\Doctrine\PostGIS\AbstractFunctionalTestCase;
-use Jsor\Doctrine\PostGIS\PointsEntity;
+use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
+use Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity;
 
-/**
- * @group postgis-2.x
- * @group postgis-2.1
- */
 class ST_GeomFromGeoHashTest extends AbstractFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->_setUpEntitySchema([
-            'Jsor\Doctrine\PostGIS\PointsEntity'
+            'Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity'
         ]);
 
         $em = $this->_getEntityManager();
@@ -45,7 +41,7 @@ class ST_GeomFromGeoHashTest extends AbstractFunctionalTestCase
 
     public function testQuery1()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_GeomFromGeoHash(\'9qqj7nmxncgyy4d0dbxqz0\')) AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_GeomFromGeoHash(\'9qqj7nmxncgyy4d0dbxqz0\')) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -64,7 +60,7 @@ class ST_GeomFromGeoHashTest extends AbstractFunctionalTestCase
         });
 
         $expected = [
-  'value' => 'POLYGON((-115.172816 36.114646,-115.172816 36.114646,-115.172816 36.114646,-115.172816 36.114646,-115.172816 36.114646))',
+  'value' => 'POLYGON((-115.17281600000001 36.11464599999999,-115.17281600000001 36.114646,-115.172816 36.114646,-115.172816 36.11464599999999,-115.17281600000001 36.11464599999999))',
 ];
 
         $this->assertEquals($expected, $result, '', 0.0001);
@@ -72,7 +68,7 @@ class ST_GeomFromGeoHashTest extends AbstractFunctionalTestCase
 
     public function testQuery2()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_GeomFromGeoHash(\'9qqj7nmxncgyy4d0dbxqz0\', 4)) AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_GeomFromGeoHash(\'9qqj7nmxncgyy4d0dbxqz0\', 4)) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 

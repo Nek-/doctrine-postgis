@@ -8,35 +8,28 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
-         bootstrap="../tests/bootstrap.php"
+         bootstrap="tests/bootstrap.php"
 >
     <testsuites>
         <testsuite name="DoctrineSpatial Test Suite">
-            <directory>../tests/</directory>
+            <directory>tests/</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>../src/</directory>
-        </whitelist>
-    </filter>
-
     <groups>
         <exclude>
-            <group>postgis-2.x</group>
-            <group>postgis-2.0</group>
-            <group>postgis-2.1</group>
-            <group>postgis-2.2</group>
+            <group>bug-postgis</group>
+            <group>removed-in-postgis-3.x</group>
+            <group>not-by-default</group>
         </exclude>
     </groups>
 
     <php>
+        <env name="POSTGIS_VERSION" value="3.1"/>
         <var name="db_type" value="pdo_pgsql"/>
         <var name="db_host" value="localhost"/>
         <var name="db_username" value="postgres"/>
-        <var name="db_password" value=""/>
+        <var name="db_password" value="password"/>
         <var name="db_name" value="doctrine_postgis_tests"/>
         <var name="db_port" value="5432"/>
     </php>

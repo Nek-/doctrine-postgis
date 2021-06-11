@@ -2,23 +2,19 @@
 
 /* This file is auto-generated. Don't edit directly! */
 
-namespace Jsor\Doctrine\PostGIS\Functions;
+namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
-use Jsor\Doctrine\PostGIS\AbstractFunctionalTestCase;
-use Jsor\Doctrine\PostGIS\PointsEntity;
+use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
+use Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity;
 
-/**
- * @group postgis-2.x
- * @group postgis-2.1
- */
 class ST_3DShortestLineTest extends AbstractFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->_setUpEntitySchema([
-            'Jsor\Doctrine\PostGIS\PointsEntity'
+            'Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity'
         ]);
 
         $em = $this->_getEntityManager();
@@ -45,7 +41,7 @@ class ST_3DShortestLineTest extends AbstractFunctionalTestCase
 
     public function testQuery1()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsEWKT(ST_3DShortestLine(ST_GeomFromEWKT(\'LINESTRING (20 80 20, 98 190 1, 110 180 3, 50 75 1000)\'), ST_GeomFromEWKT(\'POINT(100 100 30)\'))) AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsEWKT(ST_3DShortestLine(ST_GeomFromEWKT(\'LINESTRING (20 80 20, 98 190 1, 110 180 3, 50 75 1000)\'), ST_GeomFromEWKT(\'POINT(100 100 30)\'))) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -64,7 +60,7 @@ class ST_3DShortestLineTest extends AbstractFunctionalTestCase
         });
 
         $expected = [
-  'value' => 'LINESTRING(54.6993798867619 128.935022917228 11.5475869506606,100 100 30)',
+  'value' => 'LINESTRING(54.69937988676193 128.93502291722837 11.547586950660556,100 100 30)',
 ];
 
         $this->assertEquals($expected, $result, '', 0.0001);

@@ -2,19 +2,19 @@
 
 /* This file is auto-generated. Don't edit directly! */
 
-namespace Jsor\Doctrine\PostGIS\Functions;
+namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
-use Jsor\Doctrine\PostGIS\AbstractFunctionalTestCase;
-use Jsor\Doctrine\PostGIS\PointsEntity;
+use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
+use Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity;
 
 class ST_TransformTest extends AbstractFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp():void
     {
         parent::setUp();
 
         $this->_setUpEntitySchema([
-            'Jsor\Doctrine\PostGIS\PointsEntity'
+            'Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity'
         ]);
 
         $em = $this->_getEntityManager();
@@ -41,7 +41,7 @@ class ST_TransformTest extends AbstractFunctionalTestCase
 
     public function testQuery1()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_Transform(ST_GeomFromText(\'POLYGON((743238 2967416,743238 2967450,743265 2967450,743265.625 2967416,743238 2967416))\',2249),4326)) AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsText(ST_Transform(ST_GeomFromText(\'POLYGON((743238 2967416,743238 2967450,743265 2967450,743265.625 2967416,743238 2967416))\',2249),4326)) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -60,7 +60,7 @@ class ST_TransformTest extends AbstractFunctionalTestCase
         });
 
         $expected = [
-  'value' => 'POLYGON((-71.1776848522251 42.3902896512902,-71.1776843766326 42.3903829478009,-71.1775844305465 42.3903826677917,-71.1775825927231 42.3902893647987,-71.1776848522251 42.3902896512902))',
+  'value' => 'POLYGON((-71.1776848522251 42.39028965129018,-71.17768437663261 42.390382947800894,-71.17758443054647 42.39038266779171,-71.17758259272304 42.3902893647987,-71.1776848522251 42.39028965129018))',
 ];
 
         $this->assertEquals($expected, $result, '', 0.0001);

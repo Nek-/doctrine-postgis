@@ -1,12 +1,13 @@
 <?php
 
-namespace Jsor\Doctrine\PostGIS\Schema;
+namespace Jsor\Doctrine\PostGIS\Test\Schema;
 
-use Jsor\Doctrine\PostGIS\AbstractFunctionalTestCase;
+use Jsor\Doctrine\PostGIS\Schema\SchemaManager;
+use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
 
 class SchemaManagerTest extends AbstractFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -17,7 +18,7 @@ class SchemaManagerTest extends AbstractFunctionalTestCase
         $this->_execFile('postgis-' . getenv('POSTGIS_VERSION') . '_reserved-words_create.sql');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 
@@ -194,19 +195,6 @@ class SchemaManagerTest extends AbstractFunctionalTestCase
         $this->assertEquals($expected, $schemaManager->getGeographySpatialColumnInfo('"user"', '"primary"'));
     }
 
-    /**
-     * @group postgis-1.5
-     */
-    public function testIsPostGis2OnPostGIS15()
-    {
-        $schemaManager = new SchemaManager($this->_getConnection());
-
-        $this->assertFalse($schemaManager->isPostGis2());
-    }
-
-    /**
-     * @group postgis-2.x
-     */
     public function testIsPostGis2OnPostGIS2x()
     {
         $schemaManager = new SchemaManager($this->_getConnection());

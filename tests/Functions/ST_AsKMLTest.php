@@ -2,19 +2,19 @@
 
 /* This file is auto-generated. Don't edit directly! */
 
-namespace Jsor\Doctrine\PostGIS\Functions;
+namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
-use Jsor\Doctrine\PostGIS\AbstractFunctionalTestCase;
-use Jsor\Doctrine\PostGIS\PointsEntity;
+use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
+use Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity;
 
 class ST_AsKMLTest extends AbstractFunctionalTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->_setUpEntitySchema([
-            'Jsor\Doctrine\PostGIS\PointsEntity'
+            'Jsor\Doctrine\PostGIS\Test\fixtures\PointsEntity'
         ]);
 
         $em = $this->_getEntityManager();
@@ -41,7 +41,7 @@ class ST_AsKMLTest extends AbstractFunctionalTestCase
 
     public function testQuery1()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsKML(ST_GeomFromText(\'POLYGON((0 0,0 1,1 1,1 0,0 0))\',4326)) AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsKML(ST_GeomFromText(\'POLYGON((0 0,0 1,1 1,1 0,0 0))\',4326)) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -63,16 +63,12 @@ class ST_AsKMLTest extends AbstractFunctionalTestCase
   'value' => '<Polygon><outerBoundaryIs><LinearRing><coordinates>0,0 0,1 1,1 1,0 0,0</coordinates></LinearRing></outerBoundaryIs></Polygon>',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 
-    /**
-     * @group postgis-2.x
-     * @group postgis-2.1
-     */
     public function testQuery2()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsKML(2, ST_GeomFromText(\'SRID=4326;POINT(5.234234233242 6.34534534534)\'), 5, \'kmlprefix\') AS value FROM Jsor\\Doctrine\\PostGIS\\PointsEntity point');
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_AsKML(ST_GeomFromText(\'SRID=4326;POINT(5.234234233242 6.34534534534)\'), 5, \'kmlprefix\') AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -94,6 +90,6 @@ class ST_AsKMLTest extends AbstractFunctionalTestCase
   'value' => '<kmlprefix:Point><kmlprefix:coordinates>5.23423,6.34535</kmlprefix:coordinates></kmlprefix:Point>',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }
