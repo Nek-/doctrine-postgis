@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,7 +61,7 @@ class ST_IsRingTest extends AbstractFunctionalTestCase
   'value' => false,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 
     public function testQuery2()
@@ -90,6 +88,6 @@ class ST_IsRingTest extends AbstractFunctionalTestCase
   'value' => true,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

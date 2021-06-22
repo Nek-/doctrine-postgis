@@ -21,6 +21,7 @@
             <group>bug-postgis</group>
             <group>removed-in-postgis-3.x</group>
             <group>not-by-default</group>
+            <group>postgis-3.x</group>
         </exclude>
     </groups>
 
@@ -31,6 +32,6 @@
         <var name="db_username" value="postgres"/>
         <var name="db_password" value="password"/>
         <var name="db_name" value="doctrine_postgis_tests"/>
-        <var name="db_port" value="5432"/>
+        <var name="db_port" value="5433"/>
     </php>
 </phpunit>

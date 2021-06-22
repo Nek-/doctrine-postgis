@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;

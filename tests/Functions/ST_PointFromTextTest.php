@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,6 +61,6 @@ class ST_PointFromTextTest extends AbstractFunctionalTestCase
   'value' => '0101000020E6100000CB49287D21C451C0F0BF95ECD8244540',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,7 +61,7 @@ class ST_InteriorRingNTest extends AbstractFunctionalTestCase
   'value' => 'LINESTRING(77.29 29.07,77.42 29.26,77.27 29.31,77.29 29.07)',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 
     public function testQuery2()
@@ -90,6 +88,6 @@ class ST_InteriorRingNTest extends AbstractFunctionalTestCase
   'value' => null,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,6 +61,6 @@ class ST_ScaleTest extends AbstractFunctionalTestCase
   'value' => 'LINESTRING(0.5 1.5 2.4,0.5 0.75 0.8)',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

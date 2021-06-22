@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,7 +61,7 @@ class ST_MPointFromTextTest extends AbstractFunctionalTestCase
   'value' => '0104000020E61000000200000001010000004C37894160BD51C0C976BE9F1A0F45400101000000E10B93A982BD51C08126C286A70F4540',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 
     public function testQuery2()
@@ -90,6 +88,6 @@ class ST_MPointFromTextTest extends AbstractFunctionalTestCase
   'value' => null,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

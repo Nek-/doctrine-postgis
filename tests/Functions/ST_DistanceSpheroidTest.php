@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -39,7 +37,10 @@ class ST_DistanceSpheroidTest extends AbstractFunctionalTestCase
         $em->clear();
     }
 
-    public function testQuery1()
+    /**
+     * @group postgis-2.x
+     */
+    public function testQuery1Postgis2()
     {
         $query = $this->_getEntityManager()->createQuery('SELECT ST_DistanceSpheroid(ST_GeomFromText(\'POINT(-72.1235 42.3521)\', 4326), ST_GeomFromText(\'LINESTRING(-72.1260 42.45, -72.123 42.1546)\', 4326), \'SPHEROID["WGS 84",6378137,298.257223563]\') AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
@@ -60,7 +61,37 @@ class ST_DistanceSpheroidTest extends AbstractFunctionalTestCase
         });
 
         $expected = [
-  'value' => '123.802076747192',
+            'value' => '123.802076747203',
+        ];
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * @group postgis-3.x
+     */
+    public function testQuery1Postgis3()
+    {
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_DistanceSpheroid(ST_GeomFromText(\'POINT(-72.1235 42.3521)\', 4326), ST_GeomFromText(\'LINESTRING(-72.1260 42.45, -72.123 42.1546)\', 4326), \'SPHEROID["WGS 84",6378137,298.257223563]\') AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
+
+        $result = $query->getSingleResult();
+
+        array_walk_recursive($result, function (&$data) {
+            if (is_resource($data)) {
+                $data = stream_get_contents($data);
+
+                if (false !== ($pos = strpos($data, 'x'))) {
+                    $data = substr($data, $pos + 1);
+                }
+            }
+
+            if (is_string($data)) {
+                $data = trim($data);
+            }
+        });
+
+        $expected = [
+  'value' => '123.80207674721363',
 ];
 
         $this->assertEquals($expected, $result);

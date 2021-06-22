@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,6 +61,6 @@ class ST_ExtentTest extends AbstractFunctionalTestCase
   'value' => '0103000020E61000000100000005000000957CEC2E50CA51C06EC328081E214540957CEC2E50CA51C07099D36531214540E44A3D0B42CA51C07099D36531214540E44A3D0B42CA51C06EC328081E214540957CEC2E50CA51C06EC328081E214540',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -63,12 +61,13 @@ class ST_IntersectsTest extends AbstractFunctionalTestCase
   'value' => true,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 
     public function testQuery2()
     {
-        $query = $this->_getEntityManager()->createQuery('SELECT ST_Intersects(ST_GeographyFromText(\'SRID=4326;LINESTRING(-43.23456 72.4567,-43.23456 72.4568)\'), ST_GeographyFromText(\'SRID=4326;POINT(-43.23456 72.4567772)\')) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
+        // Note: changed because documentation of postgis is simply wrong.
+        $query = $this->_getEntityManager()->createQuery('SELECT ST_Intersects(ST_GeographyFromText(\'SRID=4326;LINESTRING(-43.23456 72.4567,-43.23456 72.4567772)\'), ST_GeographyFromText(\'SRID=4326;POINT(-43.23456 72.4567772)\')) AS value FROM Jsor\\Doctrine\\PostGIS\\Test\\fixtures\\PointsEntity point');
 
         $result = $query->getSingleResult();
 
@@ -90,6 +89,6 @@ class ST_IntersectsTest extends AbstractFunctionalTestCase
   'value' => true,
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }

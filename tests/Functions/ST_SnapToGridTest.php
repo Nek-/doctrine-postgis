@@ -1,7 +1,5 @@
 <?php
 
-/* This file is auto-generated. Don't edit directly! */
-
 namespace Jsor\Doctrine\PostGIS\Test\Functions;
 
 use Jsor\Doctrine\PostGIS\Test\AbstractFunctionalTestCase;
@@ -65,6 +63,6 @@ class ST_SnapToGridTest extends AbstractFunctionalTestCase
   'value3' => 'LINESTRING(-1.11 2.12 3 2.3456,4.11 3.24 3.1234 1.1111)',
 ];
 
-        $this->assertEquals($expected, $result, '', 0.0001);
+        $this->assertEquals($expected, $result);
     }
 }
